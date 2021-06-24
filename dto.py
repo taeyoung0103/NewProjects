@@ -6,37 +6,36 @@ class EDTO:
         self.SALESMAN_ID = newsalesmanid
         self.ORDER_DATE = neworderdate
 
-    def getEmpno(self):
+    def getorder_id(self):
         return self.ORDER_ID
     
-    def setEmpno(self, neworderid):
+    def setorder_id(self, neworderid):
         self.ORDER_ID = neworderid
 
-    def getEname(self):
+    def getcustomer_id(self):
         return self.CUSTOMER_ID
     
-    def setEname(self, newcustomerid):
+    def setcustomer_id(self, newcustomerid):
         self.CUSTOMER_ID = newcustomerid
 
-    def getSal(self):
+    def getstatus(self):
         return self.STATUS
     
-    def setSal(self, newstatus):
+    def setstatus(self, newstatus):
         self.STATUS = newstatus
     
-    def getEname(self):
+    def getsalesman_id(self):
         return self.SALESMAN_ID
     
-    def setEname(self, newsalesmanid):
+    def setsalesman_id(self, newsalesmanid):
         self.SALESMAN_ID = newsalesmanid
 
-    def getSal(self):
+    def getorder_date(self):
         return self.ORDER_DATE
     
-    def setSal(self, neworderdate):
+    def setorder_date(self, neworderdate):
         self.ORDER_DATE = neworderdate
 
     def __str__(self):
         return '주문번호 : ' + self.ORDER_ID + '- 고객번호 : ' + self.CUSTOMER_ID + '- 배송상태 : ' + self.STATUS + '- 주문날짜 : ' + self.ORDER_DATE
 
-        

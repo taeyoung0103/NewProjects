@@ -69,6 +69,16 @@ def updateProduct():
     return ''
 
 
+@app.route('/delete', methods=['DELETE'])
+def deleteProduct():
+    # dao = EDAO()
+    daoo = EODAO()
+    product_id = EODTO(request.form.get("product_id"), request.form.get("product_name"), request.form.get("standard_cost"), request.form.get("list_price"), request.form.get("category_id"))
+    daoo.deleteproduct(product_id)
+
+    return ''
+
+
 
 if __name__ == '__main__':
     app.run(port = 5050, debug = True)
