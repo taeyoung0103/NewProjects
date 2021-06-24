@@ -8,16 +8,18 @@
 
 
 1일차
-  주제선정
-  사용할 데이터 검색 및 가공
-  main.html 제작 및 나머지 틀 제작
+  - 주제선정
+  - 사용할 데이터 검색 및 가공
+  - main.html 제작 및 나머지 틀 제작
   
 
 2, 3일차
-  guest.html 제작
-  admin.html 제작
-  py파일들 제작 및 발표준비
+  - guest.html 제작
+  - admin.html 제작
+  - py파일들 제작 및 발표준비
   
+  
+ ! 
   
 
 ![데이터 다이어그램](https://user-images.githubusercontent.com/83930252/123186871-08c1b580-d4d4-11eb-8850-a176400ff3dd.png)
