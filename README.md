@@ -20,7 +20,7 @@
   - py파일들 제작 및 발표준비 <br><br>
   </details>
   
- ! 
+ 
   
 <br><br><br><br><br><br>
 ![데이터 다이어그램](https://user-images.githubusercontent.com/83930252/123186871-08c1b580-d4d4-11eb-8850-a176400ff3dd.png)
