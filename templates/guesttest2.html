@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Page</title>
+    <style>
+        body{
+            background-image: url('background1.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+    <style>
+        body,
+        button,
+        input {
+            text-align: center;
+            font-family: Montserrat;
+            background-image: url("background1.jpg") ;
+        }
+
+        #chart_div,
+        #demo,
+        #info {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 300px;
+            height: 10px;
+        }
+
+        table {
+            font-family: Montserrat, Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 60%;
+        }
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-family: Montserrat, Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+            font-family: Montserrat, Arial, Helvetica, sans-serif;
+        }
+        body {
+            background-image: url("background1.jpg") no-repeat center;
+
+        }
+    </style>
+    <link rel="stylesheet" href="{{url_for('static' , filename='css/teststyle.css')}}">
+</head>
+<body>
+    <h1 style="text-align: center;">Guest Page</h1>
+    <input type="text" name="customer_id" id="customer_id">
+    <button onclick="custnumber()"> View Status</button>
+
+    <script>
+        function custnumber() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    data = JSON.parse(data);
+                    
+
+                    document.getElementById("order_id").value = data.order_id;
+                    document.getElementById("customer_id").value = document.getElementById("newcustomer_id").value;
+                    document.getElementById("status").value = data.status;
+                    document.getElementById("salesman_id").value = data.salesman_id;
+                    document.getElementById("order_date").value = data.order_date;
+
+                }
+            };
+            xhttp.open("POST", "custnumber");    
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("customer_id="+document.getElementById("customer_id").value);
+            
+        }
+    </script>
+</body>
+</html>

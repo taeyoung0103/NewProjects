@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현재 고객님의 물품 현황</title>
+
+
+    <style>
+        body,
+        button,
+        input {
+            text-align: center;
+            font-family: Montserrat;
+
+        }
+
+        body {
+            background-color:rgb(243, 237, 237);
+        }
+
+        #chart_div,
+        #demo,
+        #info {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .box {
+            margin: 0 auto;
+            width: 300px;
+            height: 10px;
+        }
+
+        table {
+
+            font-family: Montserrat, Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td,
+        th {
+            background-color: #c8c7db;
+            border: 1px solid rgb(214, 136, 136);
+            padding: 8px;
+            font-family: Montserrat, Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #9d9cd1;
+            font-family: Montserrat, Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+
+</head>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<body>
+
+
+
+
+    <h1 style="text-align: center;">현재 고객님의 물품 현황</h1>
+    <input type="text" name="order_id" id="order_id" placeholder="Write Order Number"><br>
+    <br>
+    <div id="status"></div><br>
+
+    <button onclick="ordertable()"> View Status</button>
+
+    <script>
+        // function custnumber() {
+        //     const xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function () {
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             data = this.responseText;
+        //             data = JSON.parse(data);
+
+        //             document.getElementById("status").innerHTML = "Customer_ID : " + data.customer_id + " | " + "Status : " + data.status + " | " + "Order_Date : " + data.order_date;
+        //             // console.log(data);    
+
+        //         }
+        //     };
+        //     xhttp.open("POST", "custnumber");
+        //     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        //     xhttp.send("order_id=" + document.getElementById("order_id").value);
+
+        // }
+
+        function ordertable() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    data = JSON.parse(data);
+                    // console.log(data);
+                    tab =
+                        `<table border="1"><tr><th>ID Number</th><th>Status</th><th>Order Date</th></tr>`;
+
+                    let customer_id;
+                    let status;
+                    let order_date;
+
+                    customer_id = data.customer_id
+                    status = data.status
+                    order_date = data.order_date
+
+                    tab = tab + `<tr>
+                        <td>${customer_id}</td>
+                        <td>${status}</td>
+                        <td>${order_date}</td>
+                    </tr>`;
+
+
+                    tab = tab + `</table>`;
+                    document.getElementById("status").innerHTML = tab;
+
+                }
+
+            };
+            xhttp.open("POST", "custnumber");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("order_id=" + document.getElementById("order_id").value);
+        }
+    </script>
+    <br><br>
+    <h1 style="text-align: center;">올해 배송지연 수</h1><br>
+    <div id="bar_chart_div"></div>
+
+</body>
+
+<h1 style="text-align: center;">(99%의 확률로 정상배송되오니 걱정 안하셔도 됩니다.)</h1><br>
+
+<script>
+    google.charts.load('current', { 'packages': ['bar', 'corechart'] });
+
+    function schedulerSuccessAndFailChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["Title", "정상배송", { role: 'annotation' }, "배송지연", { role: 'annotation' }],
+            [""
+                , 2513, 2513 //성공데이터
+                , 27, 27] //실패데이터
+        ]);
+
+        var barChartOption = {
+            bars: 'vertical',
+            height: 260,
+            width: '100%',
+            legend: { position: "top" },
+            isStacked: false,
+            tooltip: { textStyle: { fontSize: 12 }, showColorCode: true },
+            animation: { //차트가 뿌려질때 실행될 애니메이션 효과
+                startup: true,
+                duration: 1000,
+                easing: 'linear'
+            },
+            annotations: {
+                textStyle: {
+                    fontSize: 15,
+                    bold: true,
+                    italic: true,
+                    color: '#871b47',
+                    auraColor: '#d799ae',
+                    opacity: 0.8
+                }
+            }
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('bar_chart_div'));
+
+        chart.draw(data, barChartOption);
+        //반응형 그래프 출력 - 반응형 그래프를 원하지 않을 시 제거하거나 주석처리 하세요.
+        window.addEventListener('resize', function () { chart.draw(data, barChartOption); }, false);
+    }
+
+    google.charts.setOnLoadCallback(schedulerSuccessAndFailChart);
+
+</script>
+
+</html>

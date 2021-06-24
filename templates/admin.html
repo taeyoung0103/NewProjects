@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        //구글차트 
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', '부품');
+            data.addColumn('number', '비중');
+
+            data.addRows([
+                ['IntelXeon', 50],
+                ['IntelCore', 29],
+                ['GSKILL', 39],
+                ['Samsung', 21],
+                ['Asus', 34],
+                ['Corsair', 29],
+                ['PNY', 23],
+                ['Others', 63],
+
+            ]);
+            var opt = {
+                'title': '판매퍼센트',
+                'width': 500,
+                'height': 500,
+                pieSliceText: 'label',
+                legend: 'none'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+            chart.draw(data, opt);
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1 style="text-align: center;">관리자 페이지</h1>
+    <br>
+    <hr><br>
+    <DIV style="TEXT-ALIGN:center">
+        <h3>상품등록</h3>
+    </DIV>
+
+    <DIV style="TEXT-ALIGN:center">product_id : <input type="text" id="new_product_id" value=""> </DIV>
+    <DIV style="TEXT-ALIGN:center">product_name : <input type="text" id="new_product_name" value=""></DIV>
+    <DIV style="TEXT-ALIGN:center">standard_cost : <input type="text" id="new_standard_cost" value=""></DIV>
+    <DIV style="TEXT-ALIGN:center">list_price : <input type="text" id="new_list_price" value=""></DIV>
+    <DIV style="TEXT-ALIGN:center">category_id : <input type="text" id="new_category_id" value=""></DIV>
+    <DIV style="TEXT-ALIGN:center"><button id="insertBtn()" onclick="insertProduct()">submit</button></DIV>
+
+
+    <hr><br>
+    <DIV style="TEXT-ALIGN:center">
+        <h3>상품정보수정</h3>
+    </DIV>
+    
+
+    <DIV style="TEXT-ALIGN:center">product_id : <input type="text" id="setproduct_id"> </DIV>
+    <DIV style="TEXT-ALIGN:center">product_name : <input type="text" id="setproduct_name"> </DIV>
+    <DIV style="TEXT-ALIGN:center">list_price : <input type="text" id="setlist_price"> </DIV>
+    <DIV style="TEXT-ALIGN:center"><button id="updateBtn()" onclick="updateProduct()">수정</button></DIV>
+    <hr><br>
+
+    <script>
+        //삭제
+        function deleteEmp() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    data = JSON.parse(data);
+
+                }
+            };
+            xhttp.open("DELETE", "delete");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            queryString = "product_id=" + document.getElementById("delproduct_id").value;
+            xhttp.send(queryString);
+        }
+
+
+        //수정
+        function updateProduct() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    alert("Complete Update New Data");
+                    data = JSON.parse(data);
+
+                }
+            };
+            xhttp.open("PUT", "update");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            queryString = "product_id=" + document.getElementById("setproduct_id").value +
+                "&product_name=" + document.getElementById("setproduct_name").value +
+                "&list_price=" + document.getElementById("setlist_price").value;
+            xhttp.send(queryString);
+        }
+
+
+
+        //등록
+        function insertProduct() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    // data = JSON.parse(data);
+                    alert("Complete Insert New Data");
+                    // console.log(data)
+
+                    // document.getElementById("product_id").value = document.getElementById("newproductid").value;
+                    // document.getElementById("product_name").value = data.product_name;
+                    // document.getElementById("standard_cost").value = data.standard_cost;
+                    // document.getElementById("list_price").value = data.list_price;
+                    // document.getElementById("category_id").value = data.category_id;
+
+
+                }
+            };
+            xhttp.open("POST", "insert");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            queryString = "product_id=" + document.getElementById("new_product_id").value +
+                "&product_name=" + document.getElementById("new_product_name").value +
+                "&standard_cost=" + document.getElementById("new_standard_cost").value +
+                "&list_price=" + document.getElementById("new_list_price").value +
+                "&category_id=" + document.getElementById("new_category_id").value;
+            xhttp.send(queryString);
+        }
+    </script>
+
+    <div id="myChart"></div>
+</body>
+
+</html>
