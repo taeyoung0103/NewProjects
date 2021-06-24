@@ -18,7 +18,7 @@
   - guest.html 제작 <br><br>
   - admin.html 제작 <br><br>
   - py파일들 제작 및 발표준비 <br><br>
-  
+  </details>
   
  ! 
   
