@@ -14,10 +14,10 @@
   </details>
   
 
-2, 3일차
-  - guest.html 제작
-  - admin.html 제작
-  - py파일들 제작 및 발표준비
+<details><summary> 2, 3일차 </summary><br>
+  - guest.html 제작 <br><br>
+  - admin.html 제작 <br><br>
+  - py파일들 제작 및 발표준비 <br><br>
   
   
  ! 
