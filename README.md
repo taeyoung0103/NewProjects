@@ -8,9 +8,9 @@
 
 
 <details><summary>1일차</summary>
-  - 주제선정
-  - 사용할 데이터 검색 및 가공
-  - main.html 제작 및 나머지 틀 제작
+  - 주제선정 <br>
+  - 사용할 데이터 검색 및 가공 <br>
+  - main.html 제작 및 나머지 틀 제작 <br>
   </details>
   
 
