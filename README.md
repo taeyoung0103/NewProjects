@@ -8,9 +8,9 @@
 
 
 <details><summary>1일차</summary><br>
-  - 주제선정 <br>
-  - 사용할 데이터 검색 및 가공 <br>
-  - main.html 제작 및 나머지 틀 제작 <br>
+  - 주제선정 <br><br>
+  - 사용할 데이터 검색 및 가공 <br><br>
+  - main.html 제작 및 나머지 틀 제작 <br><br>
   </details>
   
 
@@ -22,7 +22,7 @@
   
  ! 
   
-
+<br><br><br><br><br><br>
 ![데이터 다이어그램](https://user-images.githubusercontent.com/83930252/123186871-08c1b580-d4d4-11eb-8850-a176400ff3dd.png)
 
 
