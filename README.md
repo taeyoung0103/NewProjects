@@ -15,11 +15,11 @@
 
 2, 3일차
   guest.html 제작
-  admin.html 제작!
+  admin.html 제작
+  py파일들 제작 및 발표준비
   
   
-  
-  
-  
-[데다 다이어그램](https://user-images.githubusercontent.com/83930252/123186753-c7c9a100-d4d3-11eb-9ce6-5f9c9401df8c.png)
+
+![데이터 다이어그램](https://user-images.githubusercontent.com/83930252/123186871-08c1b580-d4d4-11eb-8850-a176400ff3dd.png)
+
 
