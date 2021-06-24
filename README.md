@@ -7,7 +7,7 @@
 (데이터 출처 : Oracle Sample Database)
 
 
-<details><summary>1일차</summary>
+<details><summary>1일차</summary><br>
   - 주제선정 <br>
   - 사용할 데이터 검색 및 가공 <br>
   - main.html 제작 및 나머지 틀 제작 <br>
